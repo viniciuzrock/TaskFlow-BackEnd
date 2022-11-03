@@ -1,5 +1,6 @@
 const conexaodb = require("./db/conexao")
-// const User = require("./models/User")//Cria a tabela Users
+const User = require("./models/User")//Cria a tabela Users
+const authRoutes = require("./routes/authRoutes")
 const cors = require("cors")
 const axios = require("axios")
 const express = require("express")
@@ -7,21 +8,8 @@ const port = 5000
 const app = express()
 
 app.use(cors())
-app.get("/user",(req, res)=>{
-    //já separamos o campo 'data' da resposta do axios
-    // const {data} = await axios('link_api')//conexao com o axios
-    const array = [
-        {
-            user:'admin',
-            password:1234
-        }
-    ]
-    console.log('CHAMOU');
-    return res.json({
-        user:'admin',
-        password:1234
-    })
-})
+app.use('/',authRoutes)
+
 
 conexaodb.sync({
     // force:true
