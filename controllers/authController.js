@@ -8,7 +8,7 @@ module.exports = class AuthControllers {
         console.log('CHAMOU');
         return res.json({
         user:'admin@admin',
-        password:1234
+        password:'abc1234'
         })
     }
 
